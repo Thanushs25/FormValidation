@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    h1 {
+      text-align: center;
+      font-size: medium;
+      font-style: bold;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    input,label,button,textarea {
+      text-align: center;
+      font-size: medium;
+      font-style: inherit;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 6px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .reset {
+      padding-left: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-right: 10px;
+      border-radius: 6px;
+      color: red; 
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .submit{
+      padding-left: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-right: 10px;
+      border-radius: 6px;
+      color: blue; 
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+  </style>
+  <script>
+    function validate2() {
+      var em = document.getElementById("em");
+      if (!ValidateEmail(em))
+        return;
+      var pass = document.getElementById("pass");
+      var enter_pass = validate_pass(pass);
+      if (enter_pass) {
+        var pass2 = document.getElementById("pass2");
+        if (!validate_pass2(pass2, enter_pass))
+          return;
+          
+      }
+      else
+      return;
+      var ph = document.getElementById("ph");
+      if (!validate_num(ph))
+        return;
+      alert("Successfully submitted");
+    }
+    function ValidateEmail(input) {
+      console.log("email");
+      var validRegex =
+        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+      if (!input.value.match(validRegex)) {
+        alert("Invalid email address");
+        return false;
+      }
+      return true;
+    }
+    function validate_pass(input) {
+      console.log("pass");
+      if (input.value.length <= 7) {
+        alert("Invalid password,minimum 8 chars");
+        return false;
+      } else {
+        return input.value;
+      }
+    }
+    function validate_pass2(input, pass) {
+      console.log("pass 2");
+      if (input.value !== pass) {
+        alert("Password don't match");
+        return false;
+      }
+      return true;
+    }
+    function validate_num(input) {
+      console.log("ph");
+      if (input.value.length != 10 || isNaN(input.value)) {
+        alert("Invalid Phone number");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</head>
+
+<body >
+  <h1>Validation Form </h1>
+  <hr><hr>
+  <form>
+    <label for="em"><b>Enter email</b></label>
+    <input type="email" id="em" placeholder="Enter your emailid"/>
+    <br /> &nbsp;
+    <label for="pass"><b>Enter password</b></label>
+    <input type="password" id="pass" placeholder="Enter your password"/>
+    <br /> &nbsp;
+    <label for="pass"><b>Enter password again</b></label>
+    <input type="password" id="pass2" placeholder="re enter password"/>
+    <br /> &nbsp;
+    <label for="ph"><b>Enter phone number</b></label>
+    <input type="text" id="ph" placeholder="Enter your phone number"/>
+    <br /> &nbsp;
+    <label for="gender"><b>Gender</b></label>
+    <input type="radio" name="gender">
+    <label for="gender">Male</label> 
+    <input type="radio" name="gender">
+    <label for="gender">Female</label> 
+    <input type="radio" name="gender">
+    <label for="gender">Others</label> <br> &nbsp;
+    <label for="dob"><b>DOB : </b></label> <br>
+    <input type="date" name="date"> &nbsp;
+    <label for="address"><b>Address</b></label> <br>
+    <textarea name="address" id="" cols="30" rows="10" placeholder="Enter your address..."></textarea> &nbsp;
+    <button type="button" class="submit" onclick="validate2()"><b>Submit</b></button> &nbsp;
+    <button type="reset" class="reset"><b>Reset</b></button>
+    <hr><hr>
+  </form>
+</body>
+
+</html>
